@@ -1,0 +1,6 @@
+body {
+    background-image : url('http://serc.carleton.edu/images/sp/library/google_earth/google_maps_hello_world.jpg');
+}
+.modal-backdrop.light {
+    background-color: #fff;
+}

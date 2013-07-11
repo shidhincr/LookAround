@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" ng-app="lookAroundApp">
+<head>
+    <meta charset="UTF-8">
+	<title>Angular JS Learning Example App</title>
+    <link href="////cdnjs.cloudflare.com/ajax/libs/normalize/2.1.0/normalize.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="app/css/styles.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	
+    <div id="enterZipCodeView" ng-controller="zipCodeFrmCtrl">
+        <div class="modal">
+            <div class="modal-header">
+            	<h3>Enter your Zip code</h3>
+        	</div>
+        	<div class="modal-body">
+        		<form action="#" class="form-inline" name="zipCodeFrm" novalidate>
+        			<input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode">
+        			<input type="submit" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid">
+        		</form>
+        	</div>
+    	    <div class="modal-footer">
+                <p class="text-left text-success" ng-show="!zipCodeFrm.$invalid" ng-cloak>Zip code is valid</p>   
+    	    </div>
+        </div>
+        <div class="modal-backdrop light fade in"></div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.5/angular.min.js"></script>
+    <script src="app/js/app.js"></script>
+</body>
+</html>
