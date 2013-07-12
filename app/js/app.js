@@ -2,8 +2,16 @@
 
 var lookAroundApp = angular.module("lookAroundApp", [] );
 
-lookAroundApp.controller("zipCodeFrmCtrl", function( $scope, $location ){
-    $scope.sendZip = function( zipcode ) {
-        $location.path("/main/"+ zipcode );
-    }
+
+//Router Configurations
+lookAroundApp.config(function ($routeProvider) {
+	$routeProvider
+	.when("/main/:pincode", {
+		controller: "MainCtrl",
+		templateUrl: "views/main.html"
+	})
+	.when("/", {
+		controller: "zipCodeFrmCtrl",
+		templateUrl: "views/zipcode-view.html"
+	});
 });
