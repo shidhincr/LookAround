@@ -13,6 +13,11 @@ body {
 	color: #fff;
 }
 
+.filters{
+	position: fixed;
+	z-index: 10;
+}
+
 /* Addon styles for bootstrap class goes here */
 
 .navbar-inverse .navbar-inner{
@@ -39,4 +44,5 @@ body {
 	margin: 0 0 -1px;
 	padding: 8px 14px;
 	border: 1px solid #e5e5e5;
+	background: #fff;
 }

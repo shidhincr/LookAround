@@ -24,6 +24,22 @@ lookAround.controller('zipcodeController',function($scope, $location){
 	}
 });
 
-lookAround.controller('searchController',function($scope, $routeParams){
+lookAround.controller('searchController',function($scope, $routeParams, mapFactory){
 	$scope.searchZipcode = $routeParams.zipcode;
+	mapFactory.initializeMap();
+});
+
+lookAround.factory('mapFactory',function(){
+	var factory = {};
+
+	factory.initializeMap = function(){
+		var myOptions = {
+			zoom: 5,
+			center: new google.maps.LatLng(21.508742,-0.120850),
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		return new google.maps.Map( document.getElementById('mapContainer'), myOptions );
+	}
+
+	return factory;
 });
