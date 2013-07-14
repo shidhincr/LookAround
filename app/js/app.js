@@ -1,17 +1,29 @@
 "use strict";
 
-var lookAroundApp = angular.module("lookAroundApp", [] );
+var lookAround = angular.module("lookAround", [] );
 
-
-//Router Configurations
-lookAroundApp.config(function ($routeProvider) {
+lookAround.config(function($routeProvider){
 	$routeProvider
-	.when("/main/:pincode", {
-		controller: "MainCtrl",
-		templateUrl: "views/main.html"
-	})
-	.when("/", {
-		controller: "zipCodeFrmCtrl",
-		templateUrl: "views/zipcode-view.html"
-	});
+		.when('/',
+			{
+				controller: 'zipcodeController',
+				templateUrl: 'views/zipcode.html'
+			})
+		.when('/search/:zipcode',
+			{
+				controller: 'searchController',
+				templateUrl: 'views/search.html'
+			})
+		.otherwise({ redirectTo: '/' });
+});
+
+
+lookAround.controller('zipcodeController',function($scope, $location){
+	$scope.sendZip = function( zipcode ) {
+		$location.path("/search/" + zipcode );
+	}
+});
+
+lookAround.controller('searchController',function($scope, $routeParams){
+	$scope.searchZipcode = $routeParams.zipcode;
 });
