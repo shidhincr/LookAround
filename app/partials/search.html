@@ -1,0 +1,57 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-inner">
+		<div class="container" ng-controller="ZipCodeFrmCtrl">
+            <form class="form-horizontal" name="zipCodeFrm" novalidate>
+			  <div class="control-group">
+			    <label class="control-label" for="zip">Look around near :</label>
+			    <div class="controls">
+				    <input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode">
+	                <input type="button" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">
+			    </div>
+			  </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="content">
+	<div class="container">
+		<!-- sidebar starts -->
+		<div class="bs-docs-sidebars filters">
+			<ul class="nav nav-list bs-docs-sidenav">
+				<li class="active">
+					<a href="#">
+						<i class="icon-chevron-right"></i>
+						Bars
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-chevron-right"></i>
+						Hotels
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-chevron-right"></i>
+						Gas stations
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-chevron-right"></i>
+						ATM
+					</a>
+				</li>
+				<li>
+					<a href="#">
+						<i class="icon-chevron-right"></i>
+						Internet cafes
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- sidebar ends -->
+	</div>
+	<div id="mapContainer" style="height:700px;" ng-gmap ></div>
+</div>

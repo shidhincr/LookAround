@@ -1,15 +1,18 @@
-/**
- * Zipcode controller
- */
-function zipCodeFrmCtrl( $scope, $location ){
-    $scope.sendZip = function( zipcode ) {
-        $location.path("/main/"+ zipcode );
-    }
-};
+"use strict";
 
-/**
- * Main Controller
- */
-function MainCtrl($scope) {
 
-}
+angular.module("lookAroundApp.controllers",[])
+
+	.controller( "ZipCodeFrmCtrl", function( $scope, $location ){
+		$scope.sendZip = function( zipcode ) {
+			$location.path("/search/" + zipcode );
+		}
+	})
+
+	.controller( "SearchCtrl", function( $scope, $routeParams ){
+		$scope.zipCode = $routeParams.zipcode;
+	})
+
+	.controller( "MainCtrl", function( $scope ){
+
+	});
