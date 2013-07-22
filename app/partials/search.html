@@ -1,57 +1,33 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
-	<div class="navbar-inner">
-		<div class="container" ng-controller="ZipCodeFrmCtrl">
-            <form class="form-horizontal" name="zipCodeFrm" novalidate>
-			  <div class="control-group">
-			    <label class="control-label" for="zip">Look around near :</label>
-			    <div class="controls">
-				    <input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode">
-	                <input type="button" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">
-			    </div>
-			  </div>
-			</form>
+<div class="container-fluid">
+	<div class="row-fluid navbar navbar-inverse">
+		<div class="navbar-inner" ng-controller="ZipCodeFrmCtrl">
+			<div class="container-fluid search-zipcode ">
+				<form class="form-inline" name="zipCodeFrm" novalidate>
+				  <!-- <div class="control-group"> -->
+				    <label class="search-label" for="zip">Look around near : 
+				    	<input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode" class="input-medium search-query">
+				    </label>
+	                <button type="submit" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">GO</button>
+				  <!-- </div> -->
+				</form>
+			</div>
 		</div>
 	</div>
-</div>
-
-<div class="content">
-	<div class="container">
-		<!-- sidebar starts -->
-		<div class="bs-docs-sidebars filters">
-			<ul class="nav nav-list bs-docs-sidenav">
-				<li class="active">
-					<a href="#">
-						<i class="icon-chevron-right"></i>
-						Bars
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="icon-chevron-right"></i>
-						Hotels
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="icon-chevron-right"></i>
-						Gas stations
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="icon-chevron-right"></i>
-						ATM
-					</a>
-				</li>
-				<li>
-					<a href="#">
-						<i class="icon-chevron-right"></i>
-						Internet cafes
-					</a>
-				</li>
-			</ul>
+	<div class="row-fluid">
+		<div class="span3 container well">
+			<div class="bs-docs-sidebar">
+					<ul class="nav nav-list bs-docs-sidenav affix-top">
+						<li ng-repeat="place in places">
+							<a ng-href="{{getUrl( place.url )}}">
+								<i class="icon-chevron-right"></i>
+								{{place.title}}
+							</a>
+						</li>
+					</ul>
+			</div>
 		</div>
-		<!-- sidebar ends -->
+		<div class="span9">
+			<div id="mapContainer" style="height:700px;" ng-gmap ></div>
+		</div>
 	</div>
-	<div id="mapContainer" style="height:700px;" ng-gmap ></div>
 </div>

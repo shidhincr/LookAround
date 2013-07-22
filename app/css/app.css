@@ -1,54 +1,18 @@
-body {
+body.zipcode-false {
     background-image : url('http://serc.carleton.edu/images/sp/library/google_earth/google_maps_hello_world.jpg');
 }
 .modal-backdrop.light {
     background-color: #fff;
 }
 
-.search-zipcode{
+.search-zipcode {
   margin-top: 10px;
 }
 
-.search-label{
+.search-label {
   color: #fff;
 }
-
-.filters{
-  position: fixed;
-  z-index: 10;
-}
-
-/* Addon styles for bootstrap class goes here */
-
-.navbar-inverse .navbar-inner{
-  padding-left: 10px;
-  vertical-align: middle;
-}
-.navbar-inverse .navbar-inner .container {
-  margin-top: 13px;
-}
-.navbar-inverse .navbar-inner .control-label {
-  color: #fff;
-}
-.content{
-  margin-top: 51px;
-}
-
-.navbar .navbar-inner .btn {
+/** Bootstrap overrides **/
+.navbar .btn {
   margin-top: 0;
-}
-
-.bs-docs-sidenav {
-  width: 228px;
-  margin: 30px 0 0;
-  padding: 0;
-}
-
-.bs-docs-sidenav > li > a {
-  display: block;
-  width: 190px \9;
-  margin: 0 0 -1px;
-  padding: 8px 14px;
-  border: 1px solid #e5e5e5;
-  background: #fff;
 }
