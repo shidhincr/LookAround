@@ -32,9 +32,11 @@ angular.module("lookAroundApp.controllers",[])
 
 		       	googleMap.placeService.textSearch( {
 		       		query: $scope.place,
+		       		type: $scope.place,
 		       		location: new googleMap._maps.LatLng( lat, lng ),
 		       		radius: 50
 		       	}, function( data ) {
+		       		console.log( data );
 		       		$scope.$apply(function(){
 		       			$scope.data = data;
 		       		});
