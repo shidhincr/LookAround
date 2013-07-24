@@ -16,53 +16,31 @@ angular.module("lookAroundApp.controllers",[])
 		if(!$scope.zipCode){
 			$location.path("/");
 		}
-		$scope.places = [
-			{
-				title: "Bars",
-				url: "/bars"
-			},
-			{
-				title: "Hotels",
-				url: "/hotels"
-			},
-			{
-				title: "Gas stations",
-				url: "/gas-stations"
-			},
-			{
-				title: "ATM",
-				url: "/atm"
-			},
-			{
-				title: "PUB",
-				url: "/pub"
-			},
-			{
-				title: "Internet Cafes",
-				url: "/Internet-cafes"
-			}
-		];
+		$http.get("data/places.json").success( function( results ){
+			$scope.places = results.data;
+		});
 		$scope.getUrl = function( placeurl ) {
 			return "#/search/" + $scope.zipCode + placeurl ;
 		};
 		$scope.activeClass = function( place ) {
 			return place.url.slice(1).toLowerCase() === $scope.place ? 'active':'';
 		}
+		if( $scope.place ) {
+			googleMap.getGeoCoder().geocode( { address: $scope.zipCode }, function( results, status ) {
+				var lat = results[0].geometry.location.lat(),
+		        	lng = results[0].geometry.location.lng();
 
-		googleMap.getGeoCoder().geocode( { address: $scope.zipCode }, function( results, status ) {
-			var lat = results[0].geometry.location.lat(),
-	        	lng = results[0].geometry.location.lng();
-
-	       	googleMap.placeService.textSearch( {
-	       		query: $scope.place,
-	       		location: new googleMap._maps.LatLng( lat, lng ),
-	       		radius: 50
-	       	}, function( data ) {
-	       		$scope.$apply(function(){
-	       			$scope.data = data;
-	       		});
-	       	});
-		});
+		       	googleMap.placeService.textSearch( {
+		       		query: $scope.place,
+		       		location: new googleMap._maps.LatLng( lat, lng ),
+		       		radius: 50
+		       	}, function( data ) {
+		       		$scope.$apply(function(){
+		       			$scope.data = data;
+		       		});
+		       	});
+			});
+		}
 		
 	})
 

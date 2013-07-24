@@ -1,6 +1,15 @@
 body.zipcode-false {
     background-image : url('http://serc.carleton.edu/images/sp/library/google_earth/google_maps_hello_world.jpg');
 }
+
+/* utils */
+
+.m-bottom {
+  margin-bottom: 10px;
+}
+
+/* end of utils */
+
 .modal-backdrop.light {
     background-color: #fff;
 }
@@ -34,6 +43,10 @@ body.zipcode-false {
   border: 2px solid #FFF;
   box-shadow: 0 0 5px 1px #000;
   background-color: #000;
+}
+.bs-docs-sidebar.places-container {
+  max-height: 600px;
+  overflow: scroll;
 }
 /** Bootstrap overrides **/
 .navbar .btn {
