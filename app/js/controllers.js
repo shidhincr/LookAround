@@ -13,7 +13,9 @@ angular.module("lookAroundApp.controllers",[])
 	.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http ){
 		$scope.zipCode = $routeParams.zipcode;
 		$scope.place = $routeParams.place;
-		// $scope.placeService = googleMap.placeService;
+		if(!$scope.zipCode){
+			$location.path("/");
+		}
 		$scope.places = [
 			{
 				title: "Bars",
@@ -43,6 +45,9 @@ angular.module("lookAroundApp.controllers",[])
 		$scope.getUrl = function( placeurl ) {
 			return "#/search/" + $scope.zipCode + placeurl ;
 		};
+		$scope.activeClass = function( place ) {
+			return place.url.slice(1).toLowerCase() === $scope.place ? 'active':'';
+		}
 
 		googleMap.getGeoCoder().geocode( { address: $scope.zipCode }, function( results, status ) {
 			var lat = results[0].geometry.location.lat(),

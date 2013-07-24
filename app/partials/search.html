@@ -17,7 +17,7 @@
 		<div class="span3 container well">
 			<div class="bs-docs-sidebar">
 					<ul class="nav nav-list bs-docs-sidenav affix-top">
-						<li ng-repeat="place in places">
+						<li ng-repeat="place in places" ng-class="activeClass(place)">
 							<a ng-href="{{getUrl( place.url )}}">
 								<i class="icon-chevron-right"></i>
 								{{place.title}}
