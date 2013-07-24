@@ -21,7 +21,7 @@ body.zipcode-false {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: #FFF;
-  padding-top: 20%;
+  padding-top: 10%;
 }
 .loading-indicator.hide {
   display: none;
