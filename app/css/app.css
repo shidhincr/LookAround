@@ -12,6 +12,29 @@ body.zipcode-false {
 .search-label {
   color: #fff;
 }
+.loading-indicator {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  padding-top: 20%;
+}
+.loading-indicator.hide {
+  display: none;
+}
+.loading-indicator .text {
+  width: 100px;
+  text-align: center;
+  margin: auto;
+  padding: 10px;
+  border: 2px solid #FFF;
+  box-shadow: 0 0 5px 1px #000;
+  background-color: #000;
+}
 /** Bootstrap overrides **/
 .navbar .btn {
   margin-top: 0;

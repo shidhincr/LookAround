@@ -10,8 +10,10 @@ angular.module("lookAroundApp.controllers",[])
 		}
 	})
 
-	.controller( "SearchCtrl", function( $scope, $routeParams, $location ){
+	.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http ){
 		$scope.zipCode = $routeParams.zipcode;
+		$scope.place = $routeParams.place;
+		// $scope.placeService = googleMap.placeService;
 		$scope.places = [
 			{
 				title: "Bars",
@@ -41,6 +43,22 @@ angular.module("lookAroundApp.controllers",[])
 		$scope.getUrl = function( placeurl ) {
 			return "#/search/" + $scope.zipCode + placeurl ;
 		};
+
+		googleMap.getGeoCoder().geocode( { address: $scope.zipCode }, function( results, status ) {
+			var lat = results[0].geometry.location.lat(),
+	        	lng = results[0].geometry.location.lng();
+
+	       	googleMap.placeService.textSearch( {
+	       		query: $scope.place,
+	       		location: new googleMap._maps.LatLng( lat, lng ),
+	       		radius: 50
+	       	}, function( data ) {
+	       		$scope.$apply(function(){
+	       			$scope.data = data;
+	       		});
+	       	});
+		});
+		
 	})
 
 	.controller( "MainCtrl", function( $scope, $routeParams ){

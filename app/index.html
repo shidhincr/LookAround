@@ -12,16 +12,18 @@
 <body ng-controller="MainCtrl" class="zipcode-{{applied()}}">
   <!-- View placeholder -->
   <div ng-view></div>
-
+  <div class="loading-indicator">
+    <div class='text'> Loading ... </div>
+  </div>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&sensor=false&key=AIzaSyD_5x8VZDUnu_xOC4KUN56vgz5vbHaES0A"></script>
   <script src="lib/angular/angular.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyD_5x8VZDUnu_xOC4KUN56vgz5vbHaES0A"></script>
 </body>
 </html>

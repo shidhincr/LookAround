@@ -5,8 +5,44 @@
 
 angular.module('lookAroundApp.directives', []).
   
-  directive('ngGmap', ['googleMap', function( googleMap ) {
-    return function(scope, elem, attrs) {
-      googleMap.initializeMap( elem[0] ); 
-    };
+  directive('gmap', ['googleMap', function( googleMap ) {
+	    return {
+	    	restrict: 'EA',
+	    	scope : {
+	    		data:'=data'
+	    	},
+	    	link: function( scope, elem, attrs ) {
+		    	var map = googleMap.initializeMap( elem[0] ),
+		    		markers = [];
+		    	googleMap.initPlacesService( map );
+
+		    	var renderMap = function( mapData ) {
+		    		if(!mapData){
+		    			return;
+		    		}
+		    		googleMap.placeMarkers( mapData );
+		    	}
+		    	scope.$watch('data', function( newval ){
+		    		renderMap( newval );
+		    	});
+
+		    }
+	    }
+  }])
+
+  .directive('loadingIndicator',['$rootScope', function( $rootScope ) {
+  		return {
+  			restrict: 'CA',
+  			link: function( scope, elem, attr ) {
+  				//elem.addClass('hide');
+  				$rootScope.$on('$routeChangeStart', function() {
+		            elem.removeClass('hide');
+		        });
+				$rootScope.$on('$routeChangeSuccess', function() { 
+					setTimeout( function(){
+						elem.addClass('hide');
+					},1000);
+				});
+  			}
+  		}
   }]);
