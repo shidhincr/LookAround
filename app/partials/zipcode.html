@@ -6,7 +6,7 @@
         <div class="modal-body">
             <form class="form-inline" name="zipCodeFrm" novalidate>
                 <input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode">
-                <input type="button" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">
+                <input type="submit" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">
             </form>
         </div>
         <div class="modal-footer">

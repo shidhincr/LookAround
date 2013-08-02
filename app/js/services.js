@@ -22,6 +22,9 @@ angular.module('lookAroundApp.services', [])
 			        position: google.maps.ControlPosition.RIGHT_BOTTOM
 			    }
 			};
+			if(this.map){
+				delete this.map;
+			}
 			var map = this.map  = new google.maps.Map( elem , options );
 			return map;
 		};

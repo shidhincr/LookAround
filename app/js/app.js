@@ -1,6 +1,12 @@
 "use strict";
 
-var lookAroundApp = angular.module("lookAroundApp", ["lookAroundApp.services","lookAroundApp.controllers","lookAroundApp.filters","lookAroundApp.directives"] );
+var lookAroundApp = angular.module("lookAroundApp",[
+	"lookAroundApp.services",
+	"lookAroundApp.controllers",
+	"lookAroundApp.filters",
+	"lookAroundApp.directives",
+	"ui.bootstrap"
+]);
 
 lookAroundApp.config(function($routeProvider){
 	$routeProvider

@@ -36,7 +36,6 @@ angular.module("lookAroundApp.controllers",[])
 		       		location: new googleMap._maps.LatLng( lat, lng ),
 		       		radius: 50
 		       	}, function( data ) {
-		       		console.log( data );
 		       		$scope.$apply(function(){
 		       			$scope.data = data;
 		       		});
@@ -45,7 +44,12 @@ angular.module("lookAroundApp.controllers",[])
 		}
 		
 	})
-
+	.controller( "ResultsTabCtrl", function( $scope, $routeParams, $location ){
+		$scope.tabs = {
+			"map" : false,
+			"list": true
+		};
+	})
 	.controller( "MainCtrl", function( $scope, $routeParams ){
 		$scope.applied = function(){
 			return !!$routeParams.zipcode;

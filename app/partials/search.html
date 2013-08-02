@@ -30,8 +30,15 @@
 				</ul>
 			</div>
 		</div>
-		<div class="span9">
-			<div id="mapContainer" style="height:700px;" gmap data="data"></div>
+		<div class="span9" ng-controller="ResultsTabCtrl">
+			<tabset>
+				<tab heading="Map View" active="tabs.map">
+					<div id="mapContainer" style="width: 100%;height:700px;" gmap data="data"></div>
+				</tab>
+				<tab heading="List View" active="tabs.list">
+					List tab –– Yet to be implemented.
+				</tab>
+			</tabset>
 		</div>
 	</div>
 </div>

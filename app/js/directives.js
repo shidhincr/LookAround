@@ -23,6 +23,7 @@ angular.module('lookAroundApp.directives', []).
 		    		googleMap.placeMarkers( mapData );
 		    	}
 		    	scope.$watch('data', function( newval ){
+		    		googleMap.initializeMap( elem[0] );
 		    		renderMap( newval );
 		    	});
 
