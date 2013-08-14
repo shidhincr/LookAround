@@ -13,6 +13,7 @@ angular.module("lookAroundApp.controllers",[])
 	.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http ){
 		$scope.zipCode = $routeParams.zipcode;
 		$scope.place = $routeParams.place;
+
 		if(!$scope.zipCode){
 			$location.path("/");
 		}
@@ -44,11 +45,33 @@ angular.module("lookAroundApp.controllers",[])
 		}
 		
 	})
-	.controller( "ResultsTabCtrl", function( $scope, $routeParams, $location ){
+	.controller( "ResultsTabCtrl", function( $scope, $routeParams, $location, googleMap ){
 		$scope.tabs = {
 			"map" : false,
 			"list": true
 		};
+		$scope.selectedMarker = 0;
+		$scope.listView = function(){
+			$scope.tabs = {
+				"map" : false,
+				"list": true
+			};
+		};
+		$scope.mapView = function(){
+			$scope.tabs = {
+				"map" : true,
+				"list": false
+			};
+		};
+		$scope.$watch(function(){
+			return googleMap.selectedMarkerIdx;
+		}, function(newVal){
+			var fn = function(){
+				$scope.selectedMarker = newVal;
+				//$scope.listView();
+			}
+			fn();
+		});
 	})
 	.controller( "MainCtrl", function( $scope, $routeParams ){
 		$scope.applied = function(){

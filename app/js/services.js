@@ -9,6 +9,7 @@ angular.module('lookAroundApp.services', [])
 		
 		factory._maps = google.maps;
 		factory.markers = [];
+		factory.selectedMarkerIdx = null;
 
 		factory.initializeMap = function( elem ,options ) {
 			options = options || {
@@ -24,6 +25,7 @@ angular.module('lookAroundApp.services', [])
 			};
 			if(this.map){
 				delete this.map;
+				this.selectedMarkerIdx = null;
 			}
 			var map = this.map  = new google.maps.Map( elem , options );
 			return map;
@@ -42,12 +44,16 @@ angular.module('lookAroundApp.services', [])
 			var me = this,
 				bounds = new google.maps.LatLngBounds();
 			angular.forEach( data , function(item, key){
-				var latLng = new google.maps.LatLng( item.geometry.location.lat(),item.geometry.location.lng());
-				me.markers.push( new google.maps.Marker({
+				var latLng = new google.maps.LatLng( item.geometry.location.lat(),item.geometry.location.lng()),
+					currentMarker;
+				me.markers.push( currentMarker = new google.maps.Marker({
 					map: me.map,
 					position: latLng
 				}) );
 				bounds.extend( latLng );
+				google.maps.event.addListener(currentMarker, 'click', function(){
+					me.selectedMarkerIdx = key;
+				});
 			});
 			me.map.fitBounds( bounds );
 		};

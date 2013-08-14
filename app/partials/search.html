@@ -36,7 +36,24 @@
 					<div id="mapContainer" style="width: 100%;height:700px;" gmap data="data"></div>
 				</tab>
 				<tab heading="List View" active="tabs.list">
-					List tab –– Yet to be implemented.
+					<table class="table table-striped table-hover">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>NAME</th>
+								<th>ADDRESS</th>
+								<th>LOCATION</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="details in data">
+								<td>{{$index+1}}</td>
+								<td>{{details.name}}</td>
+								<td>{{details.formatted_address}}</td>
+								<td>{{details.geometry.location.mb}},{{details.geometry.location.nb}}</td>
+							</tr>
+						</tbody>
+					</table>
 				</tab>
 			</tabset>
 		</div>
