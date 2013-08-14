@@ -13,7 +13,6 @@ angular.module("lookAroundApp.controllers",[])
 	.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http ){
 		$scope.zipCode = $routeParams.zipcode;
 		$scope.place = $routeParams.place;
-
 		if(!$scope.zipCode){
 			$location.path("/");
 		}
@@ -68,7 +67,8 @@ angular.module("lookAroundApp.controllers",[])
 		}, function(newVal){
 			var fn = function(){
 				$scope.selectedMarker = newVal;
-				//$scope.listView();
+				if(newVal)
+					$scope.listView();
 			}
 			fn();
 		});

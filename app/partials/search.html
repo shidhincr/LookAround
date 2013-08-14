@@ -46,7 +46,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="details in data">
+							<tr ng-repeat="details in data" ng-class="{active:$index==selectedMarker}">
 								<td>{{$index+1}}</td>
 								<td>{{details.name}}</td>
 								<td>{{details.formatted_address}}</td>
