@@ -17,3 +17,9 @@ Technologies/Frameworks used here :
 - Twitter bootstrap
 - TDD ( Karma runner )
 - Yeoman ( Optional now )
+
+
+Demo
+====
+
+Fiddle around with demo : [LookAround Demo App ](http://lookaround.herokuapp.com/)
