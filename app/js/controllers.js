@@ -67,9 +67,9 @@ angular.module("lookAroundApp.controllers",[])
 		}, function(newVal){
 			var fn = function(){
 				$scope.selectedMarker = newVal;
-				if(newVal) {
+				if( newVal !== null ) {
 					$scope.listView();
-			}
+				}
 			}
 			fn();
 		});
