@@ -4,7 +4,7 @@
 
 angular.module('lookAroundApp.services', [])
 
-	.factory('googleMap', function(){
+	.factory('googleMap', function($rootScope){
 		var factory = {};
 		
 		factory._maps = google.maps;
@@ -53,6 +53,7 @@ angular.module('lookAroundApp.services', [])
 				bounds.extend( latLng );
 				google.maps.event.addListener(currentMarker, 'click', function(){
 					me.selectedMarkerIdx = key;
+					$rootScope.$apply();
 				});
 			});
 			me.map.fitBounds( bounds );
