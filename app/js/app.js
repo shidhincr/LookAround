@@ -15,11 +15,6 @@ lookAroundApp.config(function($routeProvider){
 				controller: 'ZipCodeFrmCtrl',
 				templateUrl: 'partials/zipcode.html'
 			})
-		.when('/search/:zipcode',
-			{
-				controller: 'SearchCtrl',
-				templateUrl: 'partials/search.html'
-			})
 		.when('/search/:zipcode/:place',
 			{
 				controller: 'SearchCtrl',

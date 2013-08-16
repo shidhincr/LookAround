@@ -25,7 +25,10 @@ angular.module("lookAroundApp.controllers",[])
 		$scope.activeClass = function( place ) {
 			return place.url.slice(1).toLowerCase() === $scope.place ? 'active':'';
 		}
-		if( $scope.place ) {
+		if(!$scope.place){
+			$location.path( $scope.getUrl("/atm").slice(1) );
+		}
+		else {
 			googleMap.getGeoCoder().geocode( { address: $scope.zipCode }, function( results, status ) {
 				var lat = results[0].geometry.location.lat(),
 		        	lng = results[0].geometry.location.lng();
