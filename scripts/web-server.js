@@ -96,11 +96,17 @@ StaticServlet.prototype.handleRequest = function(req, res) {
   fs.stat(path, function(err, stat) {
     if (err)
       return self.sendMissing_(req, res, path);
+    console.log("stat",stat.isDirectory());
     if (stat.isDirectory())
-      return self.sendDirectory_(req, res, path);
+      return self.redirect_(req, res, "/app/index.html");
     return self.sendFile_(req, res, path);
   });
 }
+
+StaticServlet.prototype.redirect_ = function(req, res, path) {
+  res.writeHead(302, {'Location': path});
+  res.end();
+};
 
 StaticServlet.prototype.sendError_ = function(req, res, error) {
   res.writeHead(500, {
