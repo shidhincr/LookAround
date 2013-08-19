@@ -3,6 +3,8 @@ LookAround
 
 AngularJS  Learning Playground ( with some more items like Twitter bootstrap, Google maps API, TDD using Karma runner ) 
 
+![LookAround Demo](https://raw.github.com/shidhincr/LookAround/master/demo/home.png)
+
 What we're going to do ?
 =======================
 
