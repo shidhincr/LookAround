@@ -21,7 +21,7 @@ Technologies/Frameworks used here :
 - Yeoman ( Optional now )
 
 
-**Update** : *I couldn't set up the tests using karma due to time constraits. That's the next item in my TODO list.*
+**Update** : *I couldn't set up the tests using karma due to time constraints. That's the next item in my TODO list.*
 
 Demo
 ====
