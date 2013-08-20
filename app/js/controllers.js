@@ -81,4 +81,19 @@ angular.module("lookAroundApp.controllers",[])
 		$scope.applied = function(){
 			return !!$routeParams.zipcode;
 		}
+	})
+	.controller( "AboutDialogCtrl", function($scope){
+		$scope.opened = false;
+		$scope.open = function () {
+			$scope.opened = true;
+		};
+
+		$scope.close = function () {
+			$scope.opened = false;
+		};
+
+		$scope.opts = {
+			backdropFade: true,
+			dialogFade:true
+		};
 	});

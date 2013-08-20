@@ -2,7 +2,7 @@
 	<div class="row-fluid navbar navbar-inverse">
 		<div class="navbar-inner" ng-controller="ZipCodeFrmCtrl">
 			<div class="container-fluid search-zipcode ">
-				<form class="form-inline" name="zipCodeFrm" novalidate>
+				<form class="form-inline pull-left" name="zipCodeFrm" novalidate>
 				  <!-- <div class="control-group"> -->
 				    <label class="search-label" for="zip">Look around near : 
 				    	<input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode" class="input-medium search-query">
@@ -10,6 +10,39 @@
 	                <button type="submit" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">GO</button>
 				  <!-- </div> -->
 				</form>
+				<div class="pull-right" ng-controller="AboutDialogCtrl">
+					<div class="btn btn-success" ng-click="open()">About</div>
+					<div modal="opened" close="close()" options="opts">
+				        <div class="modal-header">
+				            <h3>About LookAround App</h3>
+				        </div>
+				        <div class="modal-body">
+				        	<p>
+				        		LookAround App is created for just to toy around with AngularJS.
+				        	</p>
+			        		<p>This app uses Google Maps as a service, Google Places API. UI is built with Twitter bootstrap and Angular UI components.</p>
+			        		<p>My learning curve was smooth. I explored AngularJS from it's base ( like 2 way data binding, filters ..etc ) to some advanced stuff like creating services of external API, watching service variables, creating directives ..etc.</p>
+				        	</p>
+				        	<p>It was really fun learning Angular by creating an app like this. I have learned lot –– but more are still on my way</p>
+				        	<p>BTW, I'm <a href="http://www.shidhincr.in">Shidhin</a> –– I'm a Front End Developer from Bangalore, India. Follow me on twitter</p>
+				        	<a href="https://twitter.com/shidhincr" class="btn btn-primary twitter-follow-button" data-show-count="false" data-size="large">Follow @shidhincr</a>
+				        	<p/><p/><p/>
+				        	<p>
+				        		LookAround App source is on Github: 
+				        		<a href="http://www.github.com/shidhincr/lookaround">  Link</a>
+				        	</p>
+				        	<p/><p/><p/>
+				        	<div>
+				        		<iframe src="http://ghbtns.com/github-btn.html?user=shidhincr&repo=lookAround&type=watch&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="60"></iframe>
+  								<iframe src="http://ghbtns.com/github-btn.html?user=shidhincr&repo=lookAround&type=fork&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="60"></iframe>
+  								<iframe src="http://ghbtns.com/github-btn.html?user=shidhincr&repo=lookAround&type=follow&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200" height="60"></iframe>
+				        	</div>
+				        </div>
+				        <div class="modal-footer">
+				            <button class="btn btn-warning cancel" ng-click="close()">Cancel</button>
+				        </div>
+				    </div>
+				</div>
 			</div>
 		</div>
 	</div>
