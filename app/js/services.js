@@ -67,12 +67,3 @@ angular.module('lookAroundApp.services', [])
 
 		return factory;
 	})
-
-	.service('analytics', [
-    '$rootScope', '$window', '$location', function($rootScope, $window, $location) {
-      var track = function() {
-        $window.ga('send', 'pageview', {'page': $location.path()});
-      };
-      $rootScope.$on('$viewContentLoaded', track);
-    }
-  ]);

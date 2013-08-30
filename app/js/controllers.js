@@ -77,10 +77,13 @@ angular.module("lookAroundApp.controllers",[])
 			fn();
 		});
 	})
-	.controller( "MainCtrl", function( $scope, $routeParams ){
+	.controller( "MainCtrl", function( $scope, $routeParams, $location, $window ){
 		$scope.applied = function(){
 			return !!$routeParams.zipcode;
 		}
+		$scope.$on('$viewContentLoaded', function(event) {
+			$window.ga('send', 'pageview', {'page': $location.path()});
+		});
 	})
 	.controller( "AboutDialogCtrl", function($scope){
 		$scope.opened = false;
