@@ -85,10 +85,11 @@ angular.module("lookAroundApp.controllers",[])
 			$window.ga('send', 'pageview', {'page': $location.path()});
 		});
 	})
-	.controller( "AboutDialogCtrl", function($scope){
+	.controller( "AboutDialogCtrl", function($scope,$window){
 		$scope.opened = false;
 		$scope.open = function () {
 			$scope.opened = true;
+			$window.ga('send', 'modal displayed', 'button', 'click', 'about');
 		};
 
 		$scope.close = function () {
