@@ -89,7 +89,7 @@ angular.module("lookAroundApp.controllers",[])
 		$scope.opened = false;
 		$scope.open = function () {
 			$scope.opened = true;
-			$window.ga('send', 'modal displayed', 'button', 'click', 'about');
+			$window.ga('send', 'pageview', {'page': 'about.html'});
 		};
 
 		$scope.close = function () {
