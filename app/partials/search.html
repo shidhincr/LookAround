@@ -11,6 +11,7 @@
 				  <!-- </div> -->
 				</form>
 				<div class="pull-right" ng-controller="AboutDialogCtrl" style="margin-right: 70px">
+				<iframe width="85" height="20" src="//ghbtns.com/github-btn.html?user=shidhincr&repo=lookAround&type=watch&count=true" frameborder="0" scrolling="0" allowtransparency="true" style="vertical-align:middle"></iframe>
 					<div class="btn btn-success" ng-click="open()">About</div>
 					<div modal="opened" close="close()" options="opts">
 				        <div class="modal-header">
@@ -83,7 +84,7 @@
 								<td>{{$index+1}}</td>
 								<td>{{details.name}}</td>
 								<td>{{details.formatted_address}}</td>
-								<td>{{details.geometry.location.mb}},{{details.geometry.location.nb}}</td>
+								<td>{{details.geometry.location.ob}},{{details.geometry.location.pb}}</td>
 							</tr>
 						</tbody>
 					</table>
