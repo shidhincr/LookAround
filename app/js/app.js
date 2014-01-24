@@ -1,3 +1,5 @@
+/*global angular*/
+
 "use strict";
 
 var lookAroundApp = angular.module("lookAroundApp",[
@@ -10,15 +12,15 @@ var lookAroundApp = angular.module("lookAroundApp",[
 
 lookAroundApp.config(function($routeProvider){
 	$routeProvider
-		.when('/',
+		.when("/",
 			{
-				controller: 'ZipCodeFrmCtrl',
-				templateUrl: 'partials/zipcode.html'
+				controller: "ZipCodeFrmCtrl",
+				templateUrl: "partials/zipcode.html"
 			})
-		.when('/search/:zipcode/:place',
+		.when("/search/:zipcode/:place",
 			{
-				controller: 'SearchCtrl',
-				templateUrl: 'partials/search.html'
+				controller: "SearchCtrl",
+				templateUrl: "partials/search.html"
 			})
-		.otherwise({ redirectTo: '/' });
+		.otherwise({ redirectTo: "/" });
 });
