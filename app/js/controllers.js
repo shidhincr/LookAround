@@ -11,7 +11,7 @@ angular.module( "lookAroundApp.controllers", [ ] )
   };
 } )
 
-.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http ) {
+.controller( "SearchCtrl", function( $scope, $routeParams, $location, googleMap, $http, $filter ) {
   $scope.zipCode = $routeParams.zipcode;
   $scope.place = $routeParams.place;
   if ( !$scope.zipCode ) {
@@ -25,6 +25,18 @@ angular.module( "lookAroundApp.controllers", [ ] )
   };
   $scope.activeClass = function( place ) {
     return place.url.slice( 1 ).toLowerCase( ) === $scope.place ? "active" : "";
+  };
+  $scope.getLocation = function( details ) {
+    var location = ( details && details.geometry && details.geometry.location ),
+      out = [ ];
+    if ( !location ) {
+      return "location not available";
+    } else {
+      angular.forEach( location, function( value, key ) {
+        this.push( $filter( "number" )( value, 4 ) );
+      }, out );
+      return out.join( ", " );
+    }
   };
   if ( !$scope.place ) {
     $location.path( $scope.getUrl( "/atm" ).slice( 1 ) );

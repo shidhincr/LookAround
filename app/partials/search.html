@@ -84,7 +84,7 @@
 								<td>{{$index+1}}</td>
 								<td>{{details.name}}</td>
 								<td>{{details.formatted_address}}</td>
-								<td>{{details.geometry.location.ob}},{{details.geometry.location.pb}}</td>
+								<td>{{getLocation(details)}}</td>
 							</tr>
 						</tbody>
 					</table>
