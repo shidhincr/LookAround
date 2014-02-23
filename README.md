@@ -37,3 +37,4 @@ For testing it locally, there's a `web-server.js` file included in the `scripts`
 
 For any discussions on feature requests, improvements, bugs : join me here on [![Gitter chat](https://badges.gitter.im/shidhincr/LookAround.png)](https://gitter.im/shidhincr/LookAround)
 
+Copyright (c) 2014 Shidhin C R - [Licence](LICENCE.txt)
