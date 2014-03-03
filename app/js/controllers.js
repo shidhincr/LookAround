@@ -47,6 +47,10 @@ angular.module( "lookAroundApp.controllers", [ ] )
       var lat = results[ 0 ].geometry.location.lat( ),
         lng = results[ 0 ].geometry.location.lng( );
 
+      $scope.$apply(function(){
+        $scope.searchplace = results[ 0 ] && results[ 0 ].formatted_address;
+      });  
+
       googleMap.placeService.textSearch( {
         query: $scope.place,
         type: $scope.place,

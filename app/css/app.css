@@ -48,6 +48,11 @@ body.zipcode-false {
   max-height: 600px;
   overflow: scroll;
 }
+.show-searchplace {
+  clear: both;
+  text-align: center;
+  color: #ddd;
+}
 /** Bootstrap overrides **/
 .navbar .btn {
   margin-top: 0;
@@ -58,3 +63,4 @@ body.zipcode-false {
 .table tr.active td {
   background-color: transparent !important;
 }
+
