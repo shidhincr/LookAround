@@ -12,7 +12,14 @@ angular.module("lookAroundApp.services", [ ])
         factory._maps = google.maps;
         factory.markers = [ ];
         factory.selectedMarkerIdx = null;
-
+        
+        /**
+         * Initialise the map
+         * 
+         * @param  {[type]} elem - html element
+         * @param  {[type]} options
+         * @return {object} - map instance
+         */
         factory.initializeMap = function (elem, options) {
             options = options || {
                 zoom: 4,
@@ -32,15 +39,30 @@ angular.module("lookAroundApp.services", [ ])
             var map = this.map = new google.maps.Map(elem, options);
             return map;
         };
-
+        
+        /**
+         * [getGeoCoder - gets a new geoCoder object]
+         * @return {[type]}
+         */
         factory.getGeoCoder = function () {
             return new google.maps.Geocoder();
         };
 
+        /**
+         * [initPlacesService - initialise the place service on a given map object]
+         * @param  {object} map
+         * @return {object}
+         */
         factory.initPlacesService = function (map) {
             this.placeService = new google.maps.places.PlacesService(map);
             return this.placeService;
         };
+
+        /**
+         * [placeMarkers description]
+         * @param  {array} data
+         * @return {void}
+         */
         factory.placeMarkers = function (data) {
             this.clearAllMarkers();
             var me = this,
@@ -60,6 +82,11 @@ angular.module("lookAroundApp.services", [ ])
             });
             me.map.fitBounds(bounds);
         };
+
+        /**
+         * [clearAllMarkers - clear all markers in the map]
+         * @return {void}
+         */
         factory.clearAllMarkers = function () {
             angular.forEach(this.markers, function (item, key) {
                 item.setMap(null);
