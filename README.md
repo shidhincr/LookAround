@@ -5,6 +5,8 @@ AngularJS  Learning Playground ( with some more items like Twitter bootstrap, Go
 
 ![LookAround Demo](https://raw.github.com/shidhincr/LookAround/master/demo/home.png)
 
+[ ![Codeship Status for shidhincr/LookAround](https://www.codeship.io/projects/4f41c830-e268-0131-5932-1e7d1ef3bae4/status)](https://www.codeship.io/projects/25301)
+
 What we're going to do ?
 =======================
 
