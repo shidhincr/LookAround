@@ -30,7 +30,6 @@ body.zipcode-false {
   text-align: center;
   background-color: rgba(0, 0, 0, 0.5);
   color: #FFF;
-  padding-top: 10%;
 }
 .loading-indicator.hide {
   display: none;
@@ -43,6 +42,10 @@ body.zipcode-false {
   border: 2px solid #FFF;
   box-shadow: 0 0 5px 1px #000;
   background-color: #000;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  margin-left: -50px;
 }
 .bs-docs-sidebar.places-container {
   max-height: 600px;
