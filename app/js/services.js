@@ -12,6 +12,8 @@ angular.module("lookAroundApp.services", [ ])
         factory._maps = google.maps;
         factory.markers = [ ];
         factory.selectedMarkerIdx = null;
+		factory.icons = {};
+		factory.iconNameTmpl = 'img/markers/number_{0}.png';
         
         /**
          * Initialise the map
@@ -58,6 +60,21 @@ angular.module("lookAroundApp.services", [ ])
             return this.placeService;
         };
 
+		/**
+         * [getIcon - Return the icon object used by google.maps.Marker calls]
+         * @param  {integer} num
+         * @return {object}
+         */
+		factory.getIcon = function(num) {
+			var i = this.icons['m' + num];
+			if (typeof i === 'undefined' || i === null) {
+				i = this.icons['m' + num] = {
+					url: factory.iconNameTmpl.format(num)
+                };
+			}
+			return i;
+		};
+
         /**
          * [placeMarkers description]
          * @param  {array} data
@@ -67,12 +84,14 @@ angular.module("lookAroundApp.services", [ ])
             this.clearAllMarkers();
             var me = this,
                 bounds = new google.maps.LatLngBounds();
+			var count = 1;
             angular.forEach(data, function (item, key) {
                 var latLng = new google.maps.LatLng(item.geometry.location.lat(), item.geometry.location.lng()),
-                    currentMarker;
-                me.markers.push(currentMarker = new google.maps.Marker({
-                    map: me.map,
-                    position: latLng
+                    currentMarker;	
+                me.markers.push(currentMarker =  new google.maps.Marker({
+					map: me.map,
+                	position: latLng,
+					icon: me.getIcon(count++)
                 }));
                 bounds.extend(latLng);
                 google.maps.event.addListener(currentMarker, "click", function () {
@@ -93,6 +112,11 @@ angular.module("lookAroundApp.services", [ ])
             });
             this.markers = [ ];
         };
+
+		// cw: Preload icons 1-9. Must be done after method definitions.
+		for (var x = 1; x < 10; x++) { 
+			factory.getIcon(x);
+		};
 
         return factory;
     })
