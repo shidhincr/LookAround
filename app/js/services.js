@@ -14,6 +14,7 @@ angular.module("lookAroundApp.services", [ ])
         factory.selectedMarkerIdx = null;
 		factory.icons = {};
 		factory.iconNameTmpl = 'img/markers/number_{0}.png';
+		factory.mapWidth = 0;
         
         /**
          * Initialise the map
@@ -39,6 +40,10 @@ angular.module("lookAroundApp.services", [ ])
                 this.selectedMarkerIdx = null;
             }
             var map = this.map = new google.maps.Map(elem, options);
+			// cw: This will fire off several times. We only want the time when we actually have data.
+			if (elem.clientWidth > 0) {
+				this.mapWidth = elem.clientWidth;
+			}
             return map;
         };
         
@@ -113,13 +118,25 @@ angular.module("lookAroundApp.services", [ ])
             this.markers = [ ];
         };
 
-		// cw: Preload icons 1-9. Must be done after method definitions.
-		for (var x = 1; x < 10; x++) { 
-			factory.getIcon(x);
+		/**
+         * [zoomToMarker - zoom to a marker on the map]
+		 * @param  {integer} marker index
+         * @return {void}
+         */
+		factory.zoomToMarker = function(idx) {
+			// Zoom to marker with proper zoom based on bounds.
+			var p = this.markers[idx].getPosition();
+			// cw: Would like to pan & zoom to this, but V3 API doesn't make this possible.
+			this.map.setCenter(p);
+			// cw: Zoom level determined by hand. Should be a better way.
+			this.map.setZoom(18);
+			// cw: Alternative -- find closest marker, add both points to bounds and zoom to 
+			// that to show context.
 		};
 
         return factory;
     })
+
     .factory("scrollToElem", function ($window, $timeout) {
         return {
             scrollTo: function (elemId) {
