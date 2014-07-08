@@ -166,7 +166,9 @@ angular.module("lookAroundApp.controllers", [ ])
         $scope.selectFromList = function(num) {
             $scope.mapView();
             $scope.selectedMarker = num;
+            // need to get better user experience
             googleMap.zoomToMarker(num);
+            googleMap.bounceMarker(num);
         }
 
         /*
@@ -180,7 +182,9 @@ angular.module("lookAroundApp.controllers", [ ])
                 $scope.selectedMarker = newVal;
                 if (newVal !== null) {
                     $scope.listView();
+                    // need to get better user experience
                     googleMap.zoomToMarker(newVal);
+                    googleMap.bounceMarker(newVal);
                     scrollToElem.scrollTo("listItem" + newVal);
                 }
             };

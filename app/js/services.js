@@ -97,6 +97,7 @@ angular.module("lookAroundApp.services", [ ])
                 me.markers.push(currentMarker =  new google.maps.Marker({
                     map: me.map,
                     position: latLng,
+                    animation: google.maps.Animation.DROP,
                     icon: me.getIcon(count++)
                 }));
                 bounds.extend(latLng);
@@ -130,9 +131,22 @@ angular.module("lookAroundApp.services", [ ])
             // cw: Would like to pan & zoom to this, but V3 API doesn't make this possible.
             this.map.setCenter(p);
             // cw: Zoom level determined by hand. Should be a better way.
-            this.map.setZoom(18);
+            this.map.setZoom(16);
             // cw: Alternative -- find closest marker, add both points to bounds and zoom to 
             // that to show context.
+        };
+
+        /**
+         * [bounceMarker - use the bounce animation on the marker]
+         * @param  {[type]} idx [index of the marker in markers array]
+         * @return {[type]}     [void]
+         */
+        factory.bounceMarker = function(idx){
+            var marker  = this.markers[idx];
+            angular.forEach(this.markers, function (item, key) {
+                item.setAnimation(null);
+            });
+            marker && marker.setAnimation(google.maps.Animation.BOUNCE);
         };
 
         return factory;
