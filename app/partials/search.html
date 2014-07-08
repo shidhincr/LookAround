@@ -86,7 +86,7 @@
 							<tr	id="listItem{{$index}}" ng-repeat="details in data" 
 								ng-class="{active:$index==selectedMarker}" 
 								ng-click="selectFromList($index)">
-								<td><img ng-src="img/markers/number_{{$index+1}}.png" /></td>
+								<td><img ng-src="img/markers/number_{{$index+1}}.png" class="list-markers" /></td>
 								<td>{{details.name}}</td>
 								<td>{{details.formatted_address}}</td>
 								<td>{{getLocation(details)}}</td>
