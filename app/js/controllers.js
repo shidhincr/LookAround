@@ -163,11 +163,11 @@ angular.module("lookAroundApp.controllers", [ ])
             };
         };
 
-		$scope.selectFromList = function(num) {
-			$scope.mapView();
-			$scope.selectedMarker = num;
-			googleMap.zoomToMarker(num);
-		}
+        $scope.selectFromList = function(num) {
+            $scope.mapView();
+            $scope.selectedMarker = num;
+            googleMap.zoomToMarker(num);
+        }
 
         /*
         Watches for any click inside the map markers, and switches to the list view.
@@ -180,7 +180,7 @@ angular.module("lookAroundApp.controllers", [ ])
                 $scope.selectedMarker = newVal;
                 if (newVal !== null) {
                     $scope.listView();
-					googleMap.zoomToMarker(newVal);
+                    googleMap.zoomToMarker(newVal);
                     scrollToElem.scrollTo("listItem" + newVal);
                 }
             };
