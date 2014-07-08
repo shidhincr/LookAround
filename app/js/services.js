@@ -15,6 +15,7 @@ angular.module("lookAroundApp.services", [ ])
         factory.icons = {};
         factory.iconNameTmpl = 'img/markers/number_{0}.png';
         factory.mapWidth = 0;
+		factory.mapWidth = 0;
         
         /**
          * Initialise the map
