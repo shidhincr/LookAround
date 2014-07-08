@@ -12,6 +12,10 @@ angular.module("lookAroundApp.services", [ ])
         factory._maps = google.maps;
         factory.markers = [ ];
         factory.selectedMarkerIdx = null;
+        factory.icons = {};
+        factory.iconNameTmpl = 'img/markers/number_{0}.png';
+        factory.mapWidth = 0;
+		factory.mapWidth = 0;
         
         /**
          * Initialise the map
@@ -37,6 +41,10 @@ angular.module("lookAroundApp.services", [ ])
                 this.selectedMarkerIdx = null;
             }
             var map = this.map = new google.maps.Map(elem, options);
+            // cw: This will fire off several times. We only want the time when we actually have data.
+            if (elem.clientWidth > 0) {
+                this.mapWidth = elem.clientWidth;
+            }
             return map;
         };
         
@@ -59,6 +67,21 @@ angular.module("lookAroundApp.services", [ ])
         };
 
         /**
+         * [getIcon - Return the icon object used by google.maps.Marker calls]
+         * @param  {integer} num
+         * @return {object}
+         */
+        factory.getIcon = function(num) {
+            var i = this.icons['m' + num];
+            if (typeof i === 'undefined' || i === null) {
+                i = this.icons['m' + num] = {
+                    url: factory.iconNameTmpl.format(num)
+                };
+            }
+            return i;
+        };
+
+        /**
          * [placeMarkers description]
          * @param  {array} data
          * @return {void}
@@ -67,12 +90,14 @@ angular.module("lookAroundApp.services", [ ])
             this.clearAllMarkers();
             var me = this,
                 bounds = new google.maps.LatLngBounds();
+            var count = 1;
             angular.forEach(data, function (item, key) {
                 var latLng = new google.maps.LatLng(item.geometry.location.lat(), item.geometry.location.lng()),
-                    currentMarker;
-                me.markers.push(currentMarker = new google.maps.Marker({
+                    currentMarker;    
+                me.markers.push(currentMarker =  new google.maps.Marker({
                     map: me.map,
-                    position: latLng
+                    position: latLng,
+                    icon: me.getIcon(count++)
                 }));
                 bounds.extend(latLng);
                 google.maps.event.addListener(currentMarker, "click", function () {
@@ -94,8 +119,25 @@ angular.module("lookAroundApp.services", [ ])
             this.markers = [ ];
         };
 
+        /**
+         * [zoomToMarker - zoom to a marker on the map]
+         * @param  {integer} marker index
+         * @return {void}
+         */
+        factory.zoomToMarker = function(idx) {
+            // Zoom to marker with proper zoom based on bounds.
+            var p = this.markers[idx].getPosition();
+            // cw: Would like to pan & zoom to this, but V3 API doesn't make this possible.
+            this.map.setCenter(p);
+            // cw: Zoom level determined by hand. Should be a better way.
+            this.map.setZoom(18);
+            // cw: Alternative -- find closest marker, add both points to bounds and zoom to 
+            // that to show context.
+        };
+
         return factory;
     })
+
     .factory("scrollToElem", function ($window, $timeout) {
         return {
             scrollTo: function (elemId) {
