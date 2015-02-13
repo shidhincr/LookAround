@@ -19,6 +19,18 @@ angular.module("lookAroundApp.controllers", [ ])
         $scope.sendZip = function (zipcode) {
             $location.path("/search/" + zipcode + "/" + placeurl);
         };
+        
+        // Currently displaying Result near ...
+        // Display filtered item(like Atm, Bank, Zoo..)  instead of static string "Result"
+        $scope.resultTitle = function(place) {
+            var  placeTitle = "";
+            angular.forEach($scope.places, function(result){
+                if(result.url === "/" + place){
+                    placeTitle = result.title;
+                }
+            });
+            return placeTitle;
+        }
     })
 
     /**
