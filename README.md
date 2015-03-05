@@ -11,7 +11,7 @@ What we're going to do ?
 =======================
 
 It'll be a simple application using Google maps API to load the location service and find the nearest ATM,Bar,Hotels, Pubs ..etc. Google is already
-providing these informations in their Goole+ page –– but as I said earlier, we'll be mimicking the same for our learning purpose.
+providing this information on their Google+ page –– but as I said earlier, we'll be mimicking the same for our learning purpose.
 
 Technologies/Frameworks used here :
 ======================
