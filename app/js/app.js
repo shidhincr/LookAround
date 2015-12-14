@@ -7,10 +7,11 @@ var lookAroundApp = angular.module("lookAroundApp", [
     "lookAroundApp.controllers",
     "lookAroundApp.filters",
     "lookAroundApp.directives",
-    "ui.bootstrap"
+    "ui.bootstrap",
+    "ngRoute"
 ]);
 
-lookAroundApp.config(function ($routeProvider) {
+lookAroundApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when("/",
         {
@@ -23,4 +24,5 @@ lookAroundApp.config(function ($routeProvider) {
             templateUrl: "partials/search.html"
         })
         .otherwise({ redirectTo: "/" });
-});
+    }
+]);

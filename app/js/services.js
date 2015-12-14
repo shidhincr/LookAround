@@ -6,7 +6,7 @@
 
 angular.module("lookAroundApp.services", [ ])
 
-    .factory("googleMap", function ($rootScope) {
+    .factory("googleMap", ['$rootScope', function ($rootScope) {
         var factory = {};
 
         factory._maps = google.maps;
@@ -150,9 +150,9 @@ angular.module("lookAroundApp.services", [ ])
         };
 
         return factory;
-    })
+    }])
 
-    .factory("scrollToElem", function ($window, $timeout) {
+    .factory("scrollToElem", ['$window', '$timeout', function ($window, $timeout) {
         return {
             scrollTo: function (elemId) {
                 var elem = document.getElementById(elemId);
@@ -166,4 +166,4 @@ angular.module("lookAroundApp.services", [ ])
 
             }
         };
-    });
+    }]);
