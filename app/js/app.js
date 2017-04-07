@@ -8,17 +8,18 @@ var lookAroundApp = angular.module("lookAroundApp", [
     "lookAroundApp.filters",
     "lookAroundApp.directives",
     "ui.bootstrap",
-    "ngRoute"
+    "ngRoute",
+    "google.places"
 ]);
 
 lookAroundApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when("/",
         {
-            controller: "ZipCodeFrmCtrl",
-            templateUrl: "partials/zipcode.html"
+            controller: "locFrmCtrl",
+            templateUrl: "partials/location.html"
         })
-        .when("/search/:zipcode/:place",
+        .when("/search/:loc/:place",
         {
             controller: "SearchCtrl",
             templateUrl: "partials/search.html"

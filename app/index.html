@@ -8,10 +8,11 @@
     <link href="css/normalize.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="../bower_components/angular-google-places-autocomplete/src/autocomplete.css">
     <link rel="stylesheet" href="css/app.css"/>
   </head>
 
-  <body ng-controller="MainCtrl" class="zipcode-{{applied()}}">
+  <body ng-controller="MainCtrl" class="location-{{applied()}}">
     <!-- View placeholder -->
     <div ng-view></div>
 
@@ -27,7 +28,8 @@
     <script src="../bower_components/angular-route/angular-route.js"></script>
     <script src="lib/ui-bootstrap.min.js"></script>
     <script src="lib/ui-bootstrap-tpls.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCOUo69jud8ZVGG4sa7ijZ3y6XL_XNmkXg"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyAAGgC2aY58wU72naGqF2oQHAa6iNDU_zk"></script>
+    <script src="../bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
     <script src="js/app.js"></script>
     <script src="js/services.js"></script>
     <script src="js/controllers.js"></script>
@@ -35,13 +37,13 @@
     <script src="js/directives.js"></script>
     <script src="js/utils.js"></script>
     <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      /*(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', 'UA-10379928-16', 'lookaround.herokuapp.com');
-      ga('send', 'pageview');
+      ga('send', 'pageview');*/
     </script>
   </body>
 </html>

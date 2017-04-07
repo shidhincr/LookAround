@@ -5,8 +5,8 @@
 angular.module("lookAroundApp.controllers", [ ])
     
     /**
-     * [ZipCodeFrmCtrl]
-     * Responsible for updating the route whenever zipcode is changed
+     * [locFrmCtrl]
+     * Responsible for updating the route whenever location is changed
      * appears in the first page,  and the header
      *
      * - default placeurl in route parameters is 'atm'
@@ -16,11 +16,11 @@ angular.module("lookAroundApp.controllers", [ ])
      * @param  {[type]} $routeParams
      * @return {[type]}
      */
-    .controller("ZipCodeFrmCtrl", ['$scope', '$location', '$routeParams',
+    .controller("locFrmCtrl", ['$scope', '$location', '$routeParams',
         function ($scope, $location, $routeParams) {
             var placeurl = $routeParams.place || "atm";
-            $scope.sendZip = function (zipcode) {
-                $location.path("/search/" + zipcode + "/" + placeurl);
+            $scope.sendLoc = function (loc) {
+                $location.path("/search/" + loc.formatted_address + "/" + placeurl);
             };
 
             // Currently displaying Result near ...
@@ -41,8 +41,8 @@ angular.module("lookAroundApp.controllers", [ ])
      * [SearchCtrl]
      * This controller is responsible for the main search in the view
      * 
-     * - It first gets the zip code from the route params and check for the place data
-     * - it then gets the map latitude and longitude from the zipcode ( using Google GeoCoder )
+     * - It first gets the location from the route params and check for the place data
+     * - it then gets the map latitude and longitude from the location ( using Google GeoCoder )
      * - using the places Api, it will fetch the data for the given place type ( 'atm|bar|bus-station' ..etc)
      * - and renders the map using this data
      * 
@@ -57,11 +57,11 @@ angular.module("lookAroundApp.controllers", [ ])
     .controller("SearchCtrl",
         ['$scope', '$routeParams', '$location', 'googleMap', '$http', '$filter',
             function ($scope, $routeParams, $location, googleMap, $http, $filter) {
-                $scope.zipCode = $routeParams.zipcode;
+                $scope.loc = $routeParams.loc;
                 $scope.place = $routeParams.place;
-
-                /* redirect to the home page if there's no zipcode */
-                if (!$scope.zipCode) {
+                console.log($scope.loc);
+                /* redirect to the home page if there's no location */
+                if (!$scope.loc) {
                     $location.path("/");
                 }
 
@@ -79,7 +79,7 @@ angular.module("lookAroundApp.controllers", [ ])
                  * @return {string}
                  */
                 $scope.getUrl = function (placeurl) {
-                    return "#/search/" + $scope.zipCode + placeurl;
+                    return "#/search/" + $scope.loc + placeurl;
                 };
 
                 /*
@@ -112,16 +112,17 @@ angular.module("lookAroundApp.controllers", [ ])
 
                 /*
                 start the Geocoding to get the latitude and longitude from the
-                zipcode proviced. This lat/long will be served to the places api to fetch the places details
+                location proviced. This lat/long will be served to the places api to fetch the places details
                 */
                 googleMap.getGeoCoder().geocode({
-                    address: $scope.zipCode
+                    address: $scope.loc
                 }, function (results, status) {
                     var lat = results[ 0 ].geometry.location.lat(),
                         lng = results[ 0 ].geometry.location.lng();
 
                     /* $scope.$apply is required as this function will be executed inside the GeoCoder context */
                     $scope.$apply(function () {
+                        console.log(results[ 0 ]);
                         $scope.searchplace = results[ 0 ] && results[ 0 ].formatted_address;
                     });
 
@@ -220,15 +221,15 @@ angular.module("lookAroundApp.controllers", [ ])
      */
     .controller("MainCtrl", ['$scope', '$routeParams', '$location', '$window',
         function ($scope, $routeParams, $location, $window) {
-            // checks if the url contains any valid zipcode
+            // checks if the url contains any valid location
             $scope.applied = function () {
-                return !!$routeParams.zipcode;
+                return !!$routeParams.loc;
             };
             // some Google analytics
             $scope.$on("$viewContentLoaded", function (event) {
-                $window.ga("send", "pageview", {
+                /*$window.ga("send", "pageview", {
                     "page": $location.path()
-                });
+                });*/
             });
         }
     ])

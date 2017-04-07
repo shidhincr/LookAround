@@ -1,13 +1,16 @@
 <div class="container-fluid">
 	<div class="row-fluid navbar navbar-inverse">
-		<div class="navbar-inner" ng-controller="ZipCodeFrmCtrl">
-			<div class="container-fluid search-zipcode ">
-				<form class="form-inline pull-left" name="zipCodeFrm" novalidate>
+		<div class="navbar-inner" ng-controller="locFrmCtrl">
+			<div class="container-fluid search-location ">
+				<form class="form-inline pull-left" name="locFrm" novalidate>
 				  <!-- <div class="control-group"> -->
-				    <label class="search-label" for="zip">Look around near : 
-				    	<input type="text" name="zip" placeholder="Enter your zip code" required ng-pattern="/^\d{5,6}$/" ng-model="zipCode" class="input-medium search-query">
+				    <label class="search-label" for="loc">Look around near :
+				    	<input type="text" id="loc" g-places-autocomplete
+							   name="loc" placeholder="Enter your zip code or City"
+							   ng-model="loc" class="input-medium search-query">
 				    </label>
-	                <button type="submit" class="btn btn-primary" value="GO" ng-disabled="zipCodeFrm.$invalid" ng-click="sendZip(zipCode)">GO</button>
+	                <button type="submit" class="btn btn-primary" value="GO"
+							ng-disabled="locFrm.$invalid" ng-click="sendLoc(loc)">GO</button>
 				  <!-- </div> -->
 				</form>
 				<div class="pull-right" ng-controller="AboutDialogCtrl" style="margin-right: 70px">
