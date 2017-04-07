@@ -8,7 +8,8 @@
   "homepage": "https://github.com/shidhincr/LookAround",
   "dependencies": {
     "angular": "~1.4.8",
-    "angular-route": "~1.4.8"
+    "angular-route": "~1.4.8",
+    "angular-google-places-autocomplete": "^0.2.7"
   },
   "authors": [
     "Sahil Bhatia <sahil@joshsoftware.com>"

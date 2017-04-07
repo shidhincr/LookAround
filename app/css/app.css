@@ -1,4 +1,4 @@
-body.zipcode-false {
+body.location-false {
     background-image : url('../img/google_maps_hello_world.jpg');
 }
 
@@ -14,7 +14,7 @@ body.zipcode-false {
     background-color: #fff;
 }
 
-.search-zipcode {
+.search-location {
   margin-top: 10px;
 }
 
@@ -68,5 +68,11 @@ body.zipcode-false {
 }
 .table tr.active td {
   background-color: transparent !important;
+}
+.modal{
+  z-index: -99;
+}
+.modal-backdrop{
+  z-index: -100;
 }
 

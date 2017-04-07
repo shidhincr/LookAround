@@ -1,0 +1,24 @@
+<div id="enterZipCodeView">
+    <div class="modal">
+        <div class="modal-header">
+            <h3>Enter your Place or City or Zip code</h3>
+        </div>
+        <div class="modal-body">
+            <form class="form-inline" name="locFrm" novalidate>
+                <input type="text" name="loc"
+                       g-places-autocomplete
+                       force-selection="true"
+                       placeholder="Enter your city or zip code"
+                       required
+                       ng-model="loc">
+                <input type="submit" class="btn btn-primary"
+                       value="GO" ng-disabled="locFrm.$invalid"
+                       ng-click="sendLoc(loc)">
+            </form>
+        </div>
+        <div class="modal-footer">
+            <p class="text-left text-success" ng-show="!locFrm.$invalid" ng-cloak>Place or City is valid</p>
+        </div>
+    </div>
+    <div class="modal-backdrop light fade in"></div>
+</div>
