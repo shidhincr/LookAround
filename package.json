@@ -5,7 +5,7 @@
     "bower": "^1.7.1"
   },
   "engines": {
-    "node": "0.10.x",
+    "node": "10",
     "npm": "1.2.x"
   },
   "scripts": {
